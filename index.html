@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Download Social Hub</title>
+<style>
+  :root {
+    --brand-50: #eef2ff;
+    --brand-100: #e0e7ff;
+    --brand-600: #4f46e5;
+    --brand-700: #4338ca;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-900: #0f172a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--slate-50);
+    color: var(--slate-900);
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 5rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+  .logo-mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--brand-600);
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.75rem;
+  }
+  .sub {
+    color: var(--slate-600);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0 0 2.25rem;
+  }
+  .download-card {
+    background: white;
+    border: 1px solid var(--slate-200);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    background: var(--brand-600);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.95rem 1.5rem;
+    border-radius: 10px;
+    transition: background 0.15s ease;
+  }
+  .download-btn:hover { background: var(--brand-700); }
+  .platform-note {
+    text-align: center;
+    color: var(--slate-500);
+    font-size: 0.85rem;
+    margin-top: 0.85rem;
+  }
+  .steps {
+    background: white;
+    border: 1px solid var(--slate-200);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .steps h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--slate-500);
+    margin: 0 0 1.1rem;
+  }
+  ol { margin: 0; padding-left: 1.3rem; color: var(--slate-600); }
+  li { margin-bottom: 0.9rem; line-height: 1.55; }
+  li:last-child { margin-bottom: 0; }
+  .callout {
+    background: var(--brand-50);
+    border: 1px solid var(--brand-100);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--slate-600);
+  }
+  .callout strong { color: var(--slate-900); }
+  footer {
+    margin-top: 2.5rem;
+    color: var(--slate-400);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  footer a { color: var(--slate-500); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo">
+      <div class="logo-mark">SH</div>
+      <div class="logo-name">Social Hub</div>
+    </div>
+
+    <h1>Plan, schedule, and post — together.</h1>
+    <p class="sub">
+      Download the desktop app to join your team's workspace. Once installed, it
+      keeps itself up to date automatically — you'll never need to come back here.
+    </p>
+
+    <div class="download-card">
+      <a class="download-btn" href="https://github.com/lonniemcbride/social-hub-releases/releases/latest/download/Social-Hub-Setup.exe">
+        ⬇ Download for Windows
+      </a>
+      <p class="platform-note">Windows 10/11 · updates itself in the background</p>
+    </div>
+
+    <div class="steps">
+      <h2>Getting started</h2>
+      <ol>
+        <li><strong>Download and run the installer above.</strong> It installs to your user folder, so no admin password is needed.</li>
+        <li>
+          <strong>Windows may show a blue "Windows protected your PC" screen.</strong>
+          That's expected for a new app like this one — click <strong>More info</strong>,
+          then <strong>Run anyway</strong>.
+        </li>
+        <li><strong>Sign up</strong> in the app with the email address your invite was sent to.</li>
+        <li><strong>Enter your invite code</strong> (from the invite email) on the "Join a project" screen — or just click the link in that email if you already have the app installed.</li>
+      </ol>
+    </div>
+
+    <div class="callout">
+      <strong>Why the security warning?</strong> The installer isn't yet signed with a paid
+      code-signing certificate, so Windows flags it as unrecognized. The app itself is
+      safe — this is standard for small, newly-published software.
+    </div>
+
+    <footer>
+      Having trouble? Reach out to whoever invited you.
+    </footer>
+  </div>
+</body>
+</html>
