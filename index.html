@@ -72,22 +72,33 @@
     padding: 1.75rem;
     margin-bottom: 2rem;
   }
+  .platform-row {
+    display: flex;
+    gap: 0.75rem;
+  }
   .download-btn {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
-    width: 100%;
-    background: var(--brand-600);
-    color: white;
+    gap: 0.5rem;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.05rem;
-    padding: 0.95rem 1.5rem;
+    font-size: 1rem;
+    padding: 0.95rem 1rem;
     border-radius: 10px;
-    transition: background 0.15s ease;
+    transition: all 0.15s ease;
+    border: 1px solid var(--slate-200);
+    color: var(--slate-900);
+    background: white;
   }
-  .download-btn:hover { background: var(--brand-700); }
+  .download-btn.primary {
+    background: var(--brand-600);
+    color: white;
+    border-color: var(--brand-600);
+  }
+  .download-btn.primary:hover { background: var(--brand-700); }
+  .download-btn:not(.primary):hover { background: var(--slate-100); }
   .platform-note {
     text-align: center;
     color: var(--slate-500);
@@ -107,10 +118,39 @@
     letter-spacing: 0.06em;
     color: var(--slate-500);
     margin: 0 0 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .os-toggle {
+    display: flex;
+    gap: 0.25rem;
+    background: var(--slate-100);
+    border-radius: 8px;
+    padding: 3px;
+  }
+  .os-toggle button {
+    border: none;
+    background: transparent;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--slate-500);
+    text-transform: none;
+    letter-spacing: normal;
+  }
+  .os-toggle button.active {
+    background: white;
+    color: var(--slate-900);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
   }
   ol { margin: 0; padding-left: 1.3rem; color: var(--slate-600); }
   li { margin-bottom: 0.9rem; line-height: 1.55; }
   li:last-child { margin-bottom: 0; }
+  .steps-panel { display: none; }
+  .steps-panel.active { display: block; }
   .callout {
     background: var(--brand-50);
     border: 1px solid var(--brand-100);
@@ -121,6 +161,12 @@
     color: var(--slate-600);
   }
   .callout strong { color: var(--slate-900); }
+  code {
+    background: var(--slate-100);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
   footer {
     margin-top: 2.5rem;
     color: var(--slate-400);
@@ -144,35 +190,79 @@
     </p>
 
     <div class="download-card">
-      <a class="download-btn" href="https://github.com/lonniemcbride/social-hub-releases/releases/latest/download/Social-Hub-Setup.exe">
-        ⬇ Download for Windows
-      </a>
-      <p class="platform-note">Windows 10/11 · updates itself in the background</p>
+      <div class="platform-row">
+        <a id="btn-windows" class="download-btn" href="https://github.com/lonniemcbride/social-hub-releases/releases/latest/download/Social-Hub-Setup.exe">
+          ⬇ Download for Windows
+        </a>
+        <a id="btn-mac" class="download-btn" href="https://github.com/lonniemcbride/social-hub-releases/releases/latest/download/Social-Hub.dmg">
+          ⬇ Download for Mac
+        </a>
+      </div>
+      <p class="platform-note">Windows 10/11 or macOS 12+ · updates itself in the background</p>
     </div>
 
     <div class="steps">
-      <h2>Getting started</h2>
-      <ol>
-        <li><strong>Download and run the installer above.</strong> It installs to your user folder, so no admin password is needed.</li>
-        <li>
-          <strong>Windows may show a blue "Windows protected your PC" screen.</strong>
-          That's expected for a new app like this one — click <strong>More info</strong>,
-          then <strong>Run anyway</strong>.
-        </li>
-        <li><strong>Sign up</strong> in the app with the email address your invite was sent to.</li>
-        <li><strong>Enter your invite code</strong> (from the invite email) on the "Join a project" screen — or just click the link in that email if you already have the app installed.</li>
-      </ol>
+      <h2>
+        <span>Getting started</span>
+        <span class="os-toggle">
+          <button id="tab-windows" onclick="showOs('windows')">Windows</button>
+          <button id="tab-mac" onclick="showOs('mac')">Mac</button>
+        </span>
+      </h2>
+
+      <div id="panel-windows" class="steps-panel">
+        <ol>
+          <li><strong>Download and run the installer above.</strong> It installs to your user folder, so no admin password is needed.</li>
+          <li>
+            <strong>Windows may show a blue "Windows protected your PC" screen.</strong>
+            That's expected for a new app like this one — click <strong>More info</strong>,
+            then <strong>Run anyway</strong>.
+          </li>
+          <li><strong>Sign up</strong> in the app with the email address your invite was sent to.</li>
+          <li><strong>Enter your invite code</strong> (from the invite email) on the "Join a project" screen — or just click the link in that email if you already have the app installed.</li>
+        </ol>
+      </div>
+
+      <div id="panel-mac" class="steps-panel">
+        <ol>
+          <li><strong>Open the downloaded .dmg</strong> and drag Social Hub into your Applications folder.</li>
+          <li>
+            <strong>The first time you open it, macOS will block it</strong> ("Apple could not verify...").
+            That's expected for a new app like this one — go to <strong>System Settings → Privacy &amp; Security</strong>,
+            scroll down, and click <strong>Open Anyway</strong> next to the Social Hub message. (Or right-click the
+            app in Applications and choose <strong>Open</strong> instead of double-clicking.)
+          </li>
+          <li><strong>Sign up</strong> in the app with the email address your invite was sent to.</li>
+          <li><strong>Enter your invite code</strong> (from the invite email) on the "Join a project" screen.</li>
+        </ol>
+      </div>
     </div>
 
     <div class="callout">
-      <strong>Why the security warning?</strong> The installer isn't yet signed with a paid
-      code-signing certificate, so Windows flags it as unrecognized. The app itself is
-      safe — this is standard for small, newly-published software.
+      <strong>Why the security warning?</strong> Neither installer is signed with a paid
+      certificate yet, so Windows and macOS both flag them as unrecognized. The app itself is
+      safe — this is standard for small, newly-published software, and it's only a one-time
+      step per machine.
     </div>
 
     <footer>
       Having trouble? Reach out to whoever invited you.
     </footer>
   </div>
+
+  <script>
+    function showOs(os) {
+      document.querySelectorAll('.steps-panel').forEach(function (el) { el.classList.remove('active'); });
+      document.querySelectorAll('.os-toggle button').forEach(function (el) { el.classList.remove('active'); });
+      document.querySelectorAll('.download-btn').forEach(function (el) { el.classList.remove('primary'); });
+      document.getElementById('panel-' + os).classList.add('active');
+      document.getElementById('tab-' + os).classList.add('active');
+      document.getElementById('btn-' + os).classList.add('primary');
+      try { localStorage.setItem('social-hub-os', os); } catch (e) {}
+    }
+    var detected = /Mac/.test(navigator.platform || navigator.userAgent) ? 'mac' : 'windows';
+    var saved = (function () { try { return localStorage.getItem('social-hub-os'); } catch (e) { return null; } })();
+    showOs(saved || detected);
+  </script>
 </body>
 </html>
